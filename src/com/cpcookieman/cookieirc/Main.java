@@ -10,6 +10,7 @@ public class Main extends com.cpcookieman.common
 	public static final String title = "CookieIRC";
 	public static final String version = "v2.0";
 	public static final String buildTag = "cpcookieman@area51";
+	public static final String buildNum = "0001";
 	public static String windowTitle = title + " " + version;
 	public static int width = 1024;
 	public static int height = 600;
@@ -28,10 +29,11 @@ public class Main extends com.cpcookieman.common
 		frame.setTitle(windowTitle);
 		if(getDebug())
 		{
-			windowTitle = windowTitle + " - " + buildTag + " - DEBUG";
+			windowTitle = windowTitle + "." + buildNum + " - " + buildTag + " - DEBUG";
 			frame.setTitle(windowTitle);
 		}
 		print(title + " " + version);
+		print("Build " + buildNum);
 		print("Built by " + buildTag);
 		debug("Starting " + windowTitle);
 		debug("Built by " + buildTag);
