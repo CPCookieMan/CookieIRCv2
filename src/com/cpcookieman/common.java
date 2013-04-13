@@ -1,3 +1,23 @@
+/*
+ * Q: What is this file doing here?
+ * A: I've been wanting to make a small 'common' library for a while now.
+ * 	  This file contains methods that I use in just about every program I write.
+ * 	  It makes sense then, to package them into a library and just use that.
+ * 
+ * Contents:
+ * 		Print Shorthands
+ * 		JOptionPane Shorthands
+ * 		Random Saying Generation
+ * 		Native Swing/AWT Look and Feel
+ * 		Various Debugging Methods
+ * 		Sleep Shorthand (Exceptions automatically go to the Debug methods)
+ * 
+ * Enjoy it. It's not much, but it definitely helps to have when writing large programs.
+ * 
+ * --CPCookieMan 2013
+ * 
+ */
+
 package com.cpcookieman;
 
 import java.awt.Component;
