@@ -150,7 +150,14 @@ public class CommandProcessor
 		{
 			Main.gui.tabs.get(tab).addMessage(Main.user, s);
 			Main.gui.tabs.get(tab).tabSpecificProcess(s);
-			Main.gui.tabs.get(tab).getServer().sendMessage(Main.gui.tabs.get(tab).title, s);
+			try
+			{
+				Main.gui.tabs.get(tab).getServer().sendMessage(Main.gui.tabs.get(tab).title, s);
+			}
+			catch(NullPointerException e)
+			{
+				//Don't care.
+			}
 		}	
 	}
 }
