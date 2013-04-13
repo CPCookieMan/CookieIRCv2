@@ -9,7 +9,7 @@ public class Main extends com.cpcookieman.common
 	protected static JFrame frame;
 	public static final String title = "CookieIRC";
 	public static final String version = "v2.0";
-	public static final String buildTag = "cpcookieman@glidebook";
+	public static final String buildTag = "cpcookieman@area51";
 	public static String windowTitle = title + " " + version;
 	public static int width = 1024;
 	public static int height = 600;
@@ -31,12 +31,15 @@ public class Main extends com.cpcookieman.common
 			windowTitle = windowTitle + " - " + buildTag + " - DEBUG";
 			frame.setTitle(windowTitle);
 		}
+		print(title + " " + version);
+		print("Built by " + buildTag);
 		debug("Starting " + windowTitle);
+		debug("Built by " + buildTag);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(width, height);
 		debug("Set size to " + width + "x" + height);
 		frame.setLocationRelativeTo(null);
-		user = inputBox("Please enter a default nickname:");
+		user = System.getProperty("user.name");
 		gui = new GUI();
 		frame.add(gui);
 		debug("Added GUI to Frame");
@@ -48,6 +51,9 @@ public class Main extends com.cpcookieman.common
 		gui.tabs.get(i).addMessage("/connect to servers");
 		gui.tabs.get(i).addMessage("/join #channels");
 		gui.tabs.get(i).addMessage("/msg people");
+		gui.tabs.get(i).addMessage("");
+		gui.tabs.get(i).addMessage("Current nickname is " + user + "");
+		gui.tabs.get(i).addMessage("/nick NewNickname");
 		frame.setVisible(true);
 		debug("Frame has been set to visible");
 		gui.tabs.get(i).input.requestFocus();
