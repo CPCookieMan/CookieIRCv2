@@ -156,7 +156,7 @@ public class CommandProcessor
 			}
 			catch(NullPointerException e)
 			{
-				//Don't care.
+				Main.gui.tabs.get(tab).addMessage("I'm not sure I understand \"" + s + "\" (Command not recognized)");
 			}
 		}	
 	}
