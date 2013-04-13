@@ -1,0 +1,12 @@
+CookieIRC v2
+by CPCookieMan
+
+CookieIRC is being re-made from scratch! The previous code was pretty bad. This re-make will have tabbed windows, user lists, and various other things that the old CookieIRC lacked. The goal is that this becomes a fully featured, open source IRC client.
+
+Feel free to submit pull requests!
+
+The code has been set up in an Eclipse project. Cloning into Eclipse and adding the required PIRCBot library should give you a built client. In Main.java, you should find a string called buildTag. Update this as you see fit, it just identifies where the current build was built.
+
+CookieIRC v2 is covered under the GPL license. Basically, don't take it and do a closed source spin.
+
+--CPCookieMan 2013
