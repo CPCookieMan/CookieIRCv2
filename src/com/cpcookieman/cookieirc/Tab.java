@@ -22,8 +22,7 @@ public class Tab extends javax.swing.JSplitPane
 	// 0 is server
 	// 1 is chatroom
 	// 2 is PM
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+
 	public Tab(String title, boolean userlist, int selectedaction)
 	{
 		this.title = title;
@@ -136,7 +135,6 @@ public class Tab extends javax.swing.JSplitPane
 		addMessage(sender + "> " + s);
 	}
     
-	@SuppressWarnings("rawtypes")
 	private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -158,7 +156,6 @@ public class Tab extends javax.swing.JSplitPane
     	}
     }
     
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void onAction()
     {
     	if(action == 1)
