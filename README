@@ -5,7 +5,7 @@ CookieIRC is being re-made from scratch! The previous code was pretty bad. This 
 
 Feel free to submit pull requests!
 
-The code has been set up in an Eclipse project. Cloning into Eclipse and adding the required PIRCBot library should give you a built client. In Main.java, you should find a string called buildTag. Update this as you see fit, it just identifies where the current build was built.
+The code has been set up in an Eclipse project. Cloning into Eclipse and adding the required PIRCBot library should give you a buildable client. From there, export the project as a runnable jar file, and it will create a file identical to the ones in the builds folder. In Main.java, you should find a string called buildTag. Update this as you see fit, it just identifies where the current build was built.
 
 CookieIRC v2 is covered under the GPL license. Basically, don't take it and do a closed source spin.
 

@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 
 public class Main extends com.cpcookieman.common
 {
-	protected static JFrame frame;
 	public static final String title = "CookieIRC";
 	public static final String version = "v2.0";
 	public static final String buildTag = "cpcookieman@area51";
@@ -19,6 +18,7 @@ public class Main extends com.cpcookieman.common
 	public static String user = "";
 	public static ArrayList<ServerConnection> servers = new ArrayList<ServerConnection>();
 	public static int servercounter = -1;
+	protected static JFrame frame;
 	
 	public static void main(String[] args)
 	{
