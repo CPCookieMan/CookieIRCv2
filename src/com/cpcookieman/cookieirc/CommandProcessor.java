@@ -1,7 +1,10 @@
 package com.cpcookieman.cookieirc;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -28,7 +31,11 @@ public class CommandProcessor
 				newFrame = new JWindow();
 				Main.frame.setEnabled(false);
 				newFrame.setVisible(false);
-				ImageIcon spinny = new ImageIcon("res/spinner.gif");
+				Toolkit tk = Toolkit.getDefaultToolkit();
+				URL url = getClass().getResource("spinner.gif");
+				Image img = tk.createImage(url);
+				tk.prepareImage(img, -1, -1, null);
+				ImageIcon spinny = new ImageIcon(img);
 				JLabel image = new JLabel(spinny);
 				newFrame.add(image);
 				newFrame.pack();
