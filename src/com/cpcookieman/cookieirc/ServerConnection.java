@@ -34,13 +34,21 @@ public class ServerConnection extends PircBot
 	@Override
 	protected void onConnect()
 	{
+		super.onConnect();
 		Main.gui.tabs.get(servertab).addMessage("Connected to " + serverip + ".");
 	}
 	
 	@Override
 	protected void onDisconnect()
 	{
+		super.onDisconnect();
 		Main.gui.tabs.get(servertab).addMessage("Disconnected from " + serverip + ".");
+	}
+	
+	@Override
+	protected void onJoin(String channel, String sender, String login, String hostname)
+	{
+		super.onJoin(channel, sender, login, hostname);
 	}
 	
 	@Override
