@@ -104,6 +104,29 @@ public class Tab extends javax.swing.JSplitPane
     	setLeftComponent(null);
     }
     input.requestFocus();
+    if (action == 1)
+    {
+    	Thread userPaneThread = new Thread(new Runnable()
+        {
+    		@Override
+    		public void run()
+    		{
+    			while(true)
+    			{
+    				try
+    				{
+    					Thread.sleep(2000);
+    				}
+    				catch (InterruptedException e)
+    				{
+    					e.printStackTrace();
+    				}
+    				onAction();
+    			}
+    		}
+        });
+        userPaneThread.start();
+    }
     }
 	
 	public void addMessage(String s)
