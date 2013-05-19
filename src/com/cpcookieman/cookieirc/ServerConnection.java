@@ -29,7 +29,18 @@ public class ServerConnection extends PircBot
 		{
 			Main.gui.tabs.get(tab).addMessage((e.getMessage()));
 		}
-		Main.gui.tabs.get(tab).addMessage("Connected to " + server + ".");
+	}
+	
+	@Override
+	protected void onConnect()
+	{
+		Main.gui.tabs.get(servertab).addMessage("Connected to " + serverip + ".");
+	}
+	
+	@Override
+	protected void onDisconnect()
+	{
+		Main.gui.tabs.get(servertab).addMessage("Disconnected from " + serverip + ".");
 	}
 	
 	@Override

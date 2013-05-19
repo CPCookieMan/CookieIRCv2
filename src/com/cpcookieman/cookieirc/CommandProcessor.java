@@ -81,6 +81,18 @@ public class CommandProcessor
 			Main.gui.tabs.get(tab).tabSpecificProcess(s);
 			Main.user = s.substring(6);
 		}
+		else if(s.startsWith("/close"))
+		{
+			if(tab != 0)
+			{
+				Main.gui.jTabbedPane1.remove(Main.gui.tabs.get(tab));
+				Main.debug("Closed tab: " + tab);
+			}
+			else
+			{
+				Main.gui.tabs.get(tab).addMessage("You shouldn't close the console tab!");
+			}
+		}
 		else if(s.startsWith("/join "))
 		{
 			String working = s.substring(6);
