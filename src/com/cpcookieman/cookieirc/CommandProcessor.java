@@ -109,6 +109,7 @@ public class CommandProcessor
 		{
 			if(tab != 0)
 			{
+				Main.gui.tabs.get(tab).closed = true;
 				Main.gui.jTabbedPane1.remove(Main.gui.tabs.get(tab));
 				Main.debug("Closed tab: " + tab);
 			}

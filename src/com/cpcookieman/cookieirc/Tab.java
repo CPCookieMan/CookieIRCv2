@@ -13,6 +13,7 @@ import org.jibble.pircbot.User;
 public class Tab extends javax.swing.JSplitPane
 {
 	public String server;
+	public boolean closed = false;
 	public int serverid;
 	public String title;
 	public int tabIntent;

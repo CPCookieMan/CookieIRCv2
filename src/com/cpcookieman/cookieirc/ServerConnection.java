@@ -175,8 +175,16 @@ public class ServerConnection extends PircBot
 			{
 				if(Main.gui.tabs.get(i).title.equalsIgnoreCase(sender) || Main.gui.tabs.get(i).title.substring(1).equalsIgnoreCase(sender))
 				{
-					targettab = i;
-					break;
+					//TODO Fix Bug Here
+					//     If someone sends us a PM, we open a new window,
+					//     but if they're chat window was already closed
+					//     before, a new one doesn't open for whatever reason.
+					
+					if(!Main.gui.tabs.get(i).closed)
+					{
+						targettab = i;
+						break;
+					}
 				}
 				else
 				{
@@ -185,6 +193,11 @@ public class ServerConnection extends PircBot
 			}
 			catch(Exception e)
 			{
+				int newtab = Main.gui.addTab(new Tab(sender, false, 2));
+				Main.gui.tabs.get(newtab).server = serverip;
+				Main.gui.tabs.get(newtab).serverid = serverid;
+				Main.gui.tabs.get(newtab).addMessage("Chatting with " + sender + "...");
+				targettab = newtab;
 				break;
 			}
 		}
