@@ -122,7 +122,7 @@ public class Tab extends javax.swing.JSplitPane
     				{
     					e1.printStackTrace();
     				}
-    				onAction();
+    				onUpdate();
     				while(true)
     				{
     					try
@@ -133,7 +133,7 @@ public class Tab extends javax.swing.JSplitPane
     					{
     						e.printStackTrace();
     					}
-    					onAction();
+    					onUpdate();
     				}
     			}
     		});
@@ -191,9 +191,17 @@ public class Tab extends javax.swing.JSplitPane
     	}
     }
     
-	public void onAction()
+	public void onUpdate()
     {
-    	if(action == 1)
+		// Currently this just updates the user list, but this is where things that
+		// should be updated periodically go. Updates when people enter or exit a
+		// room (including us), and also every 60 seconds.
+		updateUserList();
+    }
+	
+	public void updateUserList()
+	{
+		if(action == 1)
 	    {
 	    	Main.servers.get(serverid).getUsers(title);
 	    	jList1.setModel(new javax.swing.AbstractListModel() {
@@ -203,7 +211,7 @@ public class Tab extends javax.swing.JSplitPane
 	            public Object getElementAt(int i) { return strings[i]; }
 	        });
 	    }
-    }
+	}
 
 	public void tabSpecificProcess(String s)
 	{

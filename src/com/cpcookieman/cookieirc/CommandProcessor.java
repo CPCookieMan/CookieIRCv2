@@ -97,7 +97,7 @@ public class CommandProcessor
 		}
 		else if(s.startsWith("/reloaduser"))
 		{
-			Main.gui.tabs.get(tab).onAction();
+			Main.gui.tabs.get(tab).onUpdate();
 		}
 		else if(s.startsWith("/nick "))
 		{

@@ -71,7 +71,7 @@ public class ServerConnection extends PircBot
 			}
 		}
 		Main.gui.tabs.get(targettab).addMessage(recipientNick + " has been kicked from " + channel + " by " + kickerNick + " [" + reason + "]");
-		Main.gui.tabs.get(targettab).onAction();
+		Main.gui.tabs.get(targettab).onUpdate();
 	}
 	
 	@Override
@@ -103,7 +103,7 @@ public class ServerConnection extends PircBot
 		{
 			Main.gui.tabs.get(targettab).addMessage(sender + " joins " + channel);
 		}
-		Main.gui.tabs.get(targettab).onAction();
+		Main.gui.tabs.get(targettab).onUpdate();
 	}
 	
 	@Override
@@ -135,7 +135,7 @@ public class ServerConnection extends PircBot
 		{
 			Main.gui.tabs.get(targettab).addMessage(sender + " leaves " + channel);
 		}
-		Main.gui.tabs.get(targettab).onAction();
+		Main.gui.tabs.get(targettab).onUpdate();
 	}
 	
 	@Override
@@ -149,7 +149,7 @@ public class ServerConnection extends PircBot
 			if(Main.gui.tabs.get(i).serverid == serverid && Main.gui.tabs.get(i).title.equalsIgnoreCase(target))
 			{
 				Main.gui.tabs.get(i).addMessage("<< " + sender + " " + action + " >>");
-				Main.gui.tabs.get(i).onAction();
+				Main.gui.tabs.get(i).onUpdate();
 				i++;
 			}
 			else
