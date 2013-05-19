@@ -67,7 +67,7 @@ public class CommandProcessor
 			}
 			Main.gui.tabs.get(tab).output.append("\n### END DEBUG LOG ###");
 		}
-		else if(s.startsWith("/quit"))
+		else if(s.startsWith("/quit") || s.startsWith("/exit"))
 		{
 			System.exit(0);
 		}
