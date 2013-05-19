@@ -10,7 +10,7 @@ public class Main extends com.cpcookieman.common
 	public static final String title = "CookieIRC";
 	public static final String version = "v2.0";
 	public static final String buildTag = "cpcookieman@area51";
-	public static final String buildNum = "0002";
+	public static final String buildNum = "0003";
 	public static String windowTitle = title + " " + version;
 	public static int width = 1024;
 	public static int height = 600;
