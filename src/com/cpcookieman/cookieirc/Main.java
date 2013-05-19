@@ -22,7 +22,7 @@ public class Main extends com.cpcookieman.common
 	
 	public static void main(String[] args)
 	{
-		//setDebug(true);
+		setDebug(true);
 		nativeLook();
 		frame = new JFrame();
 		frame.setVisible(false);

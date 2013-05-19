@@ -9,45 +9,62 @@ import javax.swing.JWindow;
 
 public class CommandProcessor
 {
+	public Thread currentSpinner;
+	public JWindow newFrame;
+	
+	public void closeSpinner()
+	{
+		newFrame.dispose();
+		Main.frame.setEnabled(true);
+	}
+	
+	public void startSpinner()
+	{
+		currentSpinner = new Thread(new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				newFrame = new JWindow();
+				Main.frame.setEnabled(false);
+				newFrame.setVisible(false);
+				ImageIcon spinny = new ImageIcon("res/spinner.gif");
+				JLabel image = new JLabel(spinny);
+				newFrame.add(image);
+				newFrame.pack();
+				newFrame.addMouseListener(new MouseListener()
+				{
+					@Override
+					public void mouseClicked(MouseEvent arg0)
+					{
+						closeSpinner();
+					}
+					@Override
+					public void mouseEntered(MouseEvent arg0) {}
+					@Override
+					public void mouseExited(MouseEvent arg0) {}
+					@Override
+					public void mousePressed(MouseEvent arg0) {}
+					@Override
+					public void mouseReleased(MouseEvent arg0) {}
+				});
+				newFrame.setLocationRelativeTo(Main.frame);
+				newFrame.setVisible(true);
+				//TODO Fix the spinner
+			}
+		});
+		currentSpinner.run();
+	}
+	
 	public void process(String s, int tab)
 	{
 		if(s.equals(""))
 		{
-			
+			// Do absolutely nothing.
 		}
 		else if(s.equals("/spinner"))
 		{
-			new Thread(new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					final JWindow newFrame = new JWindow();
-					Main.frame.setEnabled(false);
-					newFrame.setVisible(false);
-					newFrame.add(new JLabel(new ImageIcon("res/spinner.gif")));
-					newFrame.pack();
-					newFrame.addMouseListener(new MouseListener()
-					{
-						@Override
-						public void mouseClicked(MouseEvent arg0)
-						{
-							newFrame.dispose();
-							Main.frame.setEnabled(true);
-						}
-						@Override
-						public void mouseEntered(MouseEvent arg0) {}
-						@Override
-						public void mouseExited(MouseEvent arg0) {}
-						@Override
-						public void mousePressed(MouseEvent arg0) {}
-						@Override
-						public void mouseReleased(MouseEvent arg0) {}
-					});
-					newFrame.setLocationRelativeTo(Main.frame);
-					newFrame.setVisible(true);
-				}
-			}).run();
+			startSpinner();
 		}
 		else if(s.equals("/debug"))
 		{
@@ -134,6 +151,9 @@ public class CommandProcessor
 		{
 			try
 			{
+				startSpinner();
+				currentSpinner.join();
+				Thread.sleep(500);
 				String working;
 				if(s.startsWith("/server"))
 				{
@@ -150,9 +170,11 @@ public class CommandProcessor
 				Main.gui.tabs.get(i).server = working;
 				Main.gui.tabs.get(i).serverid = Main.servercounter;
 				Main.debug("Connected to server '" + working + "'");
+				closeSpinner();
 			}
 			catch(Exception e)
 			{
+				closeSpinner();
 				Main.gui.tabs.get(tab).addMessage("/server or /connect", false);
 				Main.gui.tabs.get(tab).addMessage("Starts a connection with a server. Takes server IP as an argument.", false);
 			}
