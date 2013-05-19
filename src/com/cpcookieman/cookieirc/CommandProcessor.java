@@ -102,8 +102,8 @@ public class CommandProcessor
 		else if(s.startsWith("/nick "))
 		{
 			Main.gui.tabs.get(tab).addMessage(Main.user, s);
-			Main.gui.tabs.get(tab).tabSpecificProcess(s);
 			Main.user = s.substring(6);
+			Main.gui.tabs.get(tab).tabSpecificProcess(s);
 		}
 		else if(s.startsWith("/close"))
 		{

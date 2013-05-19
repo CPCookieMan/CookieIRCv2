@@ -220,6 +220,7 @@ public class Tab extends javax.swing.JSplitPane
 			if(action == -1)
 			{
 				addMessage("Changing default nick to " + s.substring(6) + ".");
+				Main.saveDefaultNickname(Main.user);
 			}
 			else
 			{
@@ -229,19 +230,19 @@ public class Tab extends javax.swing.JSplitPane
 		}
 		if(action == -1)
 		{
-			//NOTODO add console specific code
+			// Console specific code goes here.
 		}
 		else if(action == 0)
 		{
-			//NOTODO add server specific code
+			// Server specific code goes here.
 		}
 		else if(action == 1)
 		{
-			//NOTODO add room specific code
+			// Channel specific code goes here.
 		}
 		else if(action == 2)
 		{
-			//NOTODO add PM specific code
+			// Private message specific code goes here.
 		}
 		else
 		{
