@@ -111,11 +111,20 @@ public class Tab extends javax.swing.JSplitPane
     		@Override
     		public void run()
     		{
+    			try
+    			{
+					Thread.sleep(1500);
+				}
+    			catch (InterruptedException e1)
+    			{
+					e1.printStackTrace();
+				}
+    			onAction();
     			while(true)
     			{
     				try
     				{
-    					Thread.sleep(2000);
+    					Thread.sleep(60000);
     				}
     				catch (InterruptedException e)
     				{

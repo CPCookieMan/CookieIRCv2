@@ -46,9 +46,96 @@ public class ServerConnection extends PircBot
 	}
 	
 	@Override
+	protected void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) 
+	{
+		super.onKick(channel, kickerNick, kickerLogin, kickerHostname, recipientNick, reason);
+		int targettab = 0;
+		int i = 0;
+		while(true)
+		{
+			try
+			{
+				if(Main.gui.tabs.get(i).title.equalsIgnoreCase(channel) || Main.gui.tabs.get(i).title.substring(1).equalsIgnoreCase(channel))
+				{
+					targettab = i;
+					break;
+				}
+				else
+				{
+					i++;
+				}
+			}
+			catch(Exception e)
+			{
+				break;
+			}
+		}
+		Main.gui.tabs.get(targettab).addMessage(recipientNick + " has been kicked from " + channel + " by " + kickerNick + " [" + reason + "]");
+		Main.gui.tabs.get(targettab).onAction();
+	}
+	
+	@Override
 	protected void onJoin(String channel, String sender, String login, String hostname)
 	{
 		super.onJoin(channel, sender, login, hostname);
+		int targettab = 0;
+		int i = 0;
+		while(true)
+		{
+			try
+			{
+				if(Main.gui.tabs.get(i).title.equalsIgnoreCase(channel) || Main.gui.tabs.get(i).title.substring(1).equalsIgnoreCase(channel))
+				{
+					targettab = i;
+					break;
+				}
+				else
+				{
+					i++;
+				}
+			}
+			catch(Exception e)
+			{
+				break;
+			}
+		}
+		if(!sender.equals(Main.user))
+		{
+			Main.gui.tabs.get(targettab).addMessage(sender + " joins " + channel);
+		}
+		Main.gui.tabs.get(targettab).onAction();
+	}
+	
+	@Override
+	protected void onPart(String channel, String sender, String login, String hostname)
+	{
+		super.onPart(channel, sender, login, hostname);
+		int targettab = 0;
+		int i = 0;
+		while(true)
+		{
+			try
+			{
+				if(Main.gui.tabs.get(i).title.equalsIgnoreCase(channel) || Main.gui.tabs.get(i).title.substring(1).equalsIgnoreCase(channel))
+				{
+					targettab = i;
+					break;
+				}
+				else
+				{
+					i++;
+				}
+			}
+			catch(Exception e)
+			{
+				break;
+			}
+		}
+		if(!sender.equals(Main.user))
+		{
+			Main.gui.tabs.get(targettab).addMessage(sender + " leaves " + channel);
+		}
+		Main.gui.tabs.get(targettab).onAction();
 	}
 	
 	@Override
@@ -74,7 +161,6 @@ public class ServerConnection extends PircBot
 				i++;
 			}
 		}
-		
 	}
 	
 	@Override
