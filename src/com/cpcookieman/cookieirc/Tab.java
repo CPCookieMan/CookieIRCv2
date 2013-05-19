@@ -20,123 +20,125 @@ public class Tab extends javax.swing.JSplitPane
 	public boolean cleared = true;
 	public CommandProcessor cmdps = new CommandProcessor();
 	public int action;
-	// 0 is server
-	// 1 is chatroom
-	// 2 is PM
+	// -1 is the console tab
+	//  0 is server
+	//  1 is channel
+	//  2 is private message
 
 	public Tab(String title, boolean userlist, int selectedaction)
 	{
 		this.title = title;
 		setName(title);
 		action = selectedaction;
-	jPanel1 = new javax.swing.JPanel();
-    jScrollPane1 = new javax.swing.JScrollPane();
-    output = new javax.swing.JTextArea();
-    input = new javax.swing.JTextField();
-    output.setEditable(false);
-    input.addActionListener(new ActionListener()
-    {
-		@Override
-		public void actionPerformed(ActionEvent arg0)
+		jPanel1 = new javax.swing.JPanel();
+		jScrollPane1 = new javax.swing.JScrollPane();
+		output = new javax.swing.JTextArea();
+		input = new javax.swing.JTextField();
+		output.setEditable(false);
+		input.addActionListener(new ActionListener()
 		{
-			cmdps.process(input.getText(), tabIntent);
-			input.setText("");
-		}
-    });
-    jPanel2 = new javax.swing.JPanel();
-    jScrollPane2 = new javax.swing.JScrollPane();
-    jList1 = new javax.swing.JList();
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				cmdps.process(input.getText(), tabIntent);
+				input.setText("");
+			}
+		});
+		jPanel2 = new javax.swing.JPanel();
+		jScrollPane2 = new javax.swing.JScrollPane();
+		jList1 = new javax.swing.JList();
 
-    output.setColumns(20);
-    output.setRows(5);
-    output.setText("");
-    output.setLineWrap(true);
-    output.setWrapStyleWord(true);
-    DefaultCaret caret = (DefaultCaret)output.getCaret();
-    caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-    jScrollPane1.setViewportView(output);
+		output.setColumns(20);
+		output.setRows(5);
+		output.setText("");
+		output.setLineWrap(true);
+		output.setWrapStyleWord(true);
+		DefaultCaret caret = (DefaultCaret)output.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		jScrollPane1.setViewportView(output);
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
-        .addComponent(input)
-    );
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-    );
+		javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+		jPanel1.setLayout(jPanel1Layout);
+		jPanel1Layout.setHorizontalGroup(
+				jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+					.addComponent(input)
+		);
+		jPanel1Layout.setVerticalGroup(
+				jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(jPanel1Layout.createSequentialGroup()
+					.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+					.addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+		);
 
-    setRightComponent(jPanel1);
+		setRightComponent(jPanel1);
 
-    if(action == 1)
-    {
-    	Main.servers.get(serverid).getUsers(title);
-    	jList1.setModel(new javax.swing.AbstractListModel() {
-            User[] strings = Main.servers.get(serverid).getUsers(Main.gui.tabs.get(tabIntent).title);
+		if(action == 1)
+		{
+			Main.servers.get(serverid).getUsers(title);
+			jList1.setModel(new javax.swing.AbstractListModel()
+			{
+				User[] strings = Main.servers.get(serverid).getUsers(Main.gui.tabs.get(tabIntent).title);
             
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-    }
+				public int getSize() { return strings.length; }
+				public Object getElementAt(int i) { return strings[i]; }
+			});
+		}
 
     
-    jScrollPane2.setViewportView(jList1);
+		jScrollPane2.setViewportView(jList1);
 
-    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-    jPanel2.setLayout(jPanel2Layout);
-    jPanel2Layout.setHorizontalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jScrollPane2, 125, 250, Short.MAX_VALUE)
-    );
-    jPanel2Layout.setVerticalGroup(
-        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-    );
-    jPanel2.setSize(400, jPanel2.getHeight());
-    setLeftComponent(jPanel2);
+		javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+		jPanel2.setLayout(jPanel2Layout);
+		jPanel2Layout.setHorizontalGroup(
+				jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addComponent(jScrollPane2, 125, 250, Short.MAX_VALUE)
+    	);
+		jPanel2Layout.setVerticalGroup(
+				jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+		);
+		jPanel2.setSize(400, jPanel2.getHeight());
+    	setLeftComponent(jPanel2);
     
-    if(!userlist)
-    {
-    	setLeftComponent(null);
-    }
-    input.requestFocus();
-    if (action == 1)
-    {
-    	Thread userPaneThread = new Thread(new Runnable()
-        {
-    		@Override
-    		public void run()
+    	if(!userlist)
+    	{
+    		setLeftComponent(null);
+    	}
+    	input.requestFocus();
+    	if (action == 1)
+    	{
+    		Thread userPaneThread = new Thread(new Runnable()
     		{
-    			try
-    			{
-					Thread.sleep(1500);
-				}
-    			catch (InterruptedException e1)
-    			{
-					e1.printStackTrace();
-				}
-    			onAction();
-    			while(true)
+    			@Override
+    			public void run()
     			{
     				try
     				{
-    					Thread.sleep(60000);
+    					Thread.sleep(1500);
     				}
-    				catch (InterruptedException e)
+    				catch (InterruptedException e1)
     				{
-    					e.printStackTrace();
+    					e1.printStackTrace();
     				}
     				onAction();
+    				while(true)
+    				{
+    					try
+    					{
+    						Thread.sleep(60000);
+    					}
+    					catch (InterruptedException e)
+    					{
+    						e.printStackTrace();
+    					}
+    					onAction();
+    				}
     			}
-    		}
-        });
-        userPaneThread.start();
-    }
+    		});
+    		userPaneThread.start();
+    	}
     }
 	
 	public void addMessage(String s)
