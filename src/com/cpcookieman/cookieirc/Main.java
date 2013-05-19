@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class Main extends com.cpcookieman.common
-{
+{	
 	public static final String title = "CookieIRC";
 	public static final String version = "v2.0";
 	public static final String buildTag = "cpcookieman@area51";
@@ -22,7 +22,7 @@ public class Main extends com.cpcookieman.common
 	
 	public static void main(String[] args)
 	{
-		//setDebug(false);
+		//setDebug(true);
 		nativeLook();
 		frame = new JFrame();
 		frame.setVisible(false);
