@@ -112,7 +112,6 @@ public class CommandProcessor
 			}
 			else
 			{
-				//TODO Add pm joining code
 				int i = Main.gui.addTab(new Tab(working, false, 2));
 				Main.gui.tabs.get(i).server = Main.gui.tabs.get(tab).server;
 				Main.gui.tabs.get(i).serverid = Main.gui.tabs.get(tab).serverid;
