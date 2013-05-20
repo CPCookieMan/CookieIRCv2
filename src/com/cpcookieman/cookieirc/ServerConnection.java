@@ -46,6 +46,31 @@ public class ServerConnection extends PircBot
 	}
 	
 	@Override
+	protected void onNotice(String sourceNick, String sourceLogin, String sourceHostname, String target, String notice)
+	{
+		super.onNotice(sourceNick, sourceLogin, sourceHostname, target, notice);
+		int i = 0;
+		Main.debug("Check! " + sourceNick + ", " + target + ", " + notice);
+		while(true)
+		{
+			Main.debug("Notice check: " + serverid + " - " + Main.gui.tabs.get(i).serverid, false); 
+			if(Main.gui.tabs.get(i).serverid == serverid && Main.gui.tabs.get(i).title.equalsIgnoreCase(serverip))
+			{
+				Main.gui.tabs.get(i).addMessage(sourceNick + ": " + target + ", " + notice);
+				break;
+			}
+			else
+			{
+				if(i > Main.gui.tabs.size())
+				{
+					break;
+				}
+				i++;
+			}
+		}
+	}
+	
+	@Override
 	protected void onKick(String channel, String kickerNick, String kickerLogin, String kickerHostname, String recipientNick, String reason) 
 	{
 		super.onKick(channel, kickerNick, kickerLogin, kickerHostname, recipientNick, reason);
