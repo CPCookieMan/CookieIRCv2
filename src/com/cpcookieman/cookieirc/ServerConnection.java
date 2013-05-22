@@ -180,10 +180,16 @@ public class ServerConnection extends PircBot
 					//     but if they're chat window was already closed
 					//     before, a new one doesn't open for whatever reason.
 					
+					//     UPDATE: Maybe this is fixed? Please check.
+					
 					if(!Main.gui.tabs.get(i).closed)
 					{
 						targettab = i;
 						break;
+					}
+					else
+					{
+						throw new Exception("Create new PM window.");
 					}
 				}
 				else
