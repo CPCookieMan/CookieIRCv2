@@ -1,13 +1,5 @@
 package com.cpcookieman.cookieirc;
 
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.net.URL;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JWindow;
 
 public class CommandProcessor
@@ -17,12 +9,15 @@ public class CommandProcessor
 	
 	public void closeSpinner()
 	{
+		/*
 		newFrame.dispose();
 		Main.frame.setEnabled(true);
+		*/
 	}
 	
 	public void startSpinner()
 	{
+		/*
 		currentSpinner = new Thread(new Runnable()
 		{
 			@Override
@@ -61,6 +56,7 @@ public class CommandProcessor
 			}
 		});
 		currentSpinner.run();
+		*/
 	}
 	
 	public void process(String s, int tab)
@@ -160,8 +156,6 @@ public class CommandProcessor
 			try
 			{
 				startSpinner();
-				currentSpinner.join();
-				Thread.sleep(500);
 				String working;
 				if(s.startsWith("/server"))
 				{
