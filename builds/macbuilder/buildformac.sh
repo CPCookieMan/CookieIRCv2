@@ -9,9 +9,4 @@
 set -e
 
 read -p "Please enter the build number: " build
-printf "Building... "
-cp -r Template.app CookieIRCv2-$build.app
-cp ../CookieIRCv2-$build.jar CookieIRCv2-$build.app/Contents/Resources/Java/CookieIRCv2.jar
-zip -FSr ../CookieIRCv2-$build-OSX.zip CookieIRCv2-$build.app > /dev/null
-rm -rf CookieIRCv2-$build.app
-printf "DONE\n"
+./buildformacargs.sh $build
