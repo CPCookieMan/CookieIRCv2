@@ -4,8 +4,6 @@
 # Tested on OS X and Ubuntu variants
 # Requires the zip command
 
-# Paul Hollinsky
-
 set -e
 
 read -p "Please enter the build number: " build

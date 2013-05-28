@@ -4,8 +4,6 @@
 # Tested on OS X and Ubuntu variants
 # Requires the zip command
 
-# Paul Hollinsky
-
 set -e
 
 build=$1
