@@ -94,7 +94,7 @@ public class CommandProcessor
 		
 		else if(s.startsWith("/notify"))
 		{
-			NotificationManager.postNotification(Main.title, "I am a subtitle", "Test123");
+			NotificationManager.postNotification(Main.title, "I am a subtitle", "Test123", tab);
 		}
 		
 		else if(s.startsWith("/reloaduser"))

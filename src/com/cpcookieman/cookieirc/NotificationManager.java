@@ -5,7 +5,7 @@ import com.sun.jna.Native;
 
 public class NotificationManager
 {
-	public static void postNotification(String title, String subtitle, String message)
+	public static void postNotification(String title, String subtitle, String message, int tab)
 	{
 		try
 		{
@@ -14,6 +14,7 @@ public class NotificationManager
 		catch (UnsatisfiedLinkError e)
 		{
 			Main.debug("Could not post to the OSX Notification Center.");
+			Main.gui.tabs.get(tab).addMessage("[NOTIFY] " + title + ": " + subtitle + ", " + message);
 		}
 		Main.debug("Posted Notification: " + title + ", " + subtitle + ", " + message);
 	}
