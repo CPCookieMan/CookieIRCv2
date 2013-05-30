@@ -91,6 +91,12 @@ public class CommandProcessor
 		{
 			System.exit(0);
 		}
+		
+		else if(s.startsWith("/notify"))
+		{
+			NotificationManager.postNotification(Main.title, "I am a subtitle", "Test123");
+		}
+		
 		else if(s.startsWith("/reloaduser"))
 		{
 			Main.gui.tabs.get(tab).onUpdate();
