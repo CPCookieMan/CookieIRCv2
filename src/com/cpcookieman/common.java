@@ -119,6 +119,10 @@ public class common
 	{
 		try
 		{
+			if(System.getProperty("os.name").equals("Linux"))
+			{
+				throw new Exception();
+			}
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			return true;
 		}
